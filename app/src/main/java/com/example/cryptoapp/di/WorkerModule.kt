@@ -7,6 +7,7 @@ import com.example.cryptoapp.di.ApplicationScope
 import com.example.cryptoapp.workers.RefreshDataWorker
 import dagger.Module
 import dagger.Provides
+import dagger.multibindings.IntoMap
 
 @Module
 class WorkerModule {

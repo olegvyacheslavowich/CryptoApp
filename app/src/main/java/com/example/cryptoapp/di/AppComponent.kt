@@ -14,7 +14,8 @@ import javax.inject.Inject
         DataModule::class,
         RepositoryModule::class,
         ViewModelModule::class,
-        WorkerModule::class]
+        WorkerModule::class,
+        WorkersModule::class]
 )
 @ApplicationScope
 interface AppComponent {
