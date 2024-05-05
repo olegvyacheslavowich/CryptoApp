@@ -1,11 +1,16 @@
-package com.example.cryptoapp.data.di
+package com.example.cryptoapp.di
 
 import android.content.Context
-import com.example.cryptoapp.di.ApplicationScope
 import dagger.BindsInstance
 import dagger.Component
 
-@Component
+@Component(modules = [
+    DataModule::class,
+    MapperModule::class,
+    RepositoryModule::class,
+    UseCaseModule::class,
+    ViewModelModule::class,
+    WorkerModule::class])
 @ApplicationScope
 interface AppComponent {
 

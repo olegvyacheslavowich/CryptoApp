@@ -7,11 +7,18 @@ import androidx.work.WorkerParameters
 import com.example.cryptoapp.data.database.AppDatabase
 import com.example.cryptoapp.data.mapper.CoinMapper
 import com.example.cryptoapp.data.network.ApiFactory
+import javax.inject.Inject
 
-class RefreshDataWorker(context: Context, params: WorkerParameters) :
+class RefreshDataWorker @Inject constructor(
+    context: Context,
+    params: WorkerParameters
+) :
     CoroutineWorker(context, params) {
 
-    private val coinInfoDao = AppDatabase.getInstance(context).coinPriceInfoDao()
+    @Inject
+    lateinit var appDatabase: AppDatabase
+
+    private val coinInfoDao by lazy { appDatabase.coinPriceInfoDao() }
     private val apiService = ApiFactory.apiService
     private val mapper = CoinMapper()
 

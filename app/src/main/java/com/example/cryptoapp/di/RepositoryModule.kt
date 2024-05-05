@@ -1,4 +1,4 @@
-package com.example.cryptoapp.data.di
+package com.example.cryptoapp.di
 
 import com.example.cryptoapp.data.repository.CoinRepositoryImpl
 import com.example.cryptoapp.di.ApplicationScope
