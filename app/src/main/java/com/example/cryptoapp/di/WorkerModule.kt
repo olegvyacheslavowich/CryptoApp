@@ -9,7 +9,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-abstract class WorkerModule {
+class WorkerModule {
     @Provides
     @ApplicationScope
     fun provideWorkManager(context: Context): WorkManager = WorkManager.getInstance(context)

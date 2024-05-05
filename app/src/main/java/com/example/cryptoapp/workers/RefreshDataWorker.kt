@@ -6,21 +6,18 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkerParameters
 import com.example.cryptoapp.data.database.AppDatabase
 import com.example.cryptoapp.data.mapper.CoinMapper
-import com.example.cryptoapp.data.network.ApiFactory
-import javax.inject.Inject
+import com.example.cryptoapp.data.network.ApiService
 
-class RefreshDataWorker @Inject constructor(
+class RefreshDataWorker(
     context: Context,
-    params: WorkerParameters
+    params: WorkerParameters,
+    private val appDatabase: AppDatabase,
+    private val apiService: ApiService,
+    private val mapper: CoinMapper
 ) :
     CoroutineWorker(context, params) {
 
-    @Inject
-    lateinit var appDatabase: AppDatabase
-
     private val coinInfoDao by lazy { appDatabase.coinPriceInfoDao() }
-    private val apiService = ApiFactory.apiService
-    private val mapper = CoinMapper()
 
     override suspend fun doWork(): Result {
         val topCoins = apiService.getTopCoinsInfo(limit = 50)

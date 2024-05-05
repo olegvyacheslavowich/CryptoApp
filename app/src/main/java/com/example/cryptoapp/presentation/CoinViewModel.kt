@@ -6,16 +6,12 @@ import com.example.cryptoapp.domain.GetCoinInfoUseCase
 import com.example.cryptoapp.domain.LoadDataUseCase
 import javax.inject.Inject
 
-class CoinViewModel : ViewModel() {
+class CoinViewModel @Inject constructor(
+    private val getCoinInfoListUseCase: GetCoinInfoListUseCase,
+    private val getCoinInfoUseCase: GetCoinInfoUseCase,
+    private val loadDataUseCase: LoadDataUseCase
 
-    @Inject
-    lateinit var getCoinInfoListUseCase: GetCoinInfoListUseCase
-
-    @Inject
-    lateinit var getCoinInfoUseCase: GetCoinInfoUseCase
-
-    @Inject
-    lateinit var loadDataUseCase: LoadDataUseCase
+) : ViewModel() {
 
     val coinInfoList = getCoinInfoListUseCase()
 
